@@ -29,6 +29,11 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $content;
 
     /**
