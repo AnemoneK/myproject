@@ -17,7 +17,11 @@
     <div id="notice" class="success alert alert-success">
         {{ message }}
     </div>
-    {% endfor %} {% block body %}{% endblock %} {% block javascripts %}{% endblock %}
+    {% endfor %} {% block body %}{% endblock %}
+    <script src="{{ asset('js/jquery-3.3.1.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+
+    {% block javascripts %}{% endblock %}
 </body>
 
 </html>
