@@ -22,8 +22,11 @@
             <td>{{ post.summary }}</td>
             <td>{{ post.content }}</td>
             <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            <td>{{ post.user }}</td>
-            <td><img src="{{asset('images/post/')}}{{ post.image }}"></td>
+            <td>
+                {% if post.user %} {{ post.user }} {% else %}
+                <i>Annonymous</i> {% endif %}
+            </td>
+            <td><img src="{{asset('images/post/')}}{{ post.image }}" style="width:75px;max-height: 75px;"></td>
             <td>
                 <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
                 <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
