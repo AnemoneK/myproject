@@ -34,8 +34,17 @@ class CommentaireController extends AbstractController
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
 
+        if(!$this->getUser()) {
+            $this->addFlash('danger', 'You must be identified to access this section');
+
+            return $this->redirectToRoute('commentaire_index');
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $commentaire->setUser($this->getUser());
+
             $entityManager->persist($commentaire);
             $entityManager->flush();
 
